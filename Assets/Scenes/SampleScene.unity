@@ -263,28 +263,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1816826429 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3179378367842757156, guid: 4d0d7f63f76557749a6bd632cd5b581c,
-    type: 3}
-  m_PrefabInstance: {fileID: 3179378367101057049}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1816826430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816826429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 150866957e611e140a1ec7398b0fc423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  applePrefab: {fileID: 0}
-  speed: 1
-  leftAndRightEdge: 10
-  chanceToChangeDirections: 0.1
 --- !u!1 &2797347378019620212 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2797347378019620212, guid: c3056abfe994d5b4abe28f1a11b19f57,
@@ -307,6 +285,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2797347378019620214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2797347378019620212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 150866957e611e140a1ec7398b0fc423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applePrefab: {fileID: 0}
+  speed: 15
+  leftAndRightEdge: 20
+  chanceToChangeDirections: 0.05
 --- !u!1001 &3179378367101057049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -465,7 +459,7 @@ PrefabInstance:
     - target: {fileID: 6432632021300231392, guid: c3056abfe994d5b4abe28f1a11b19f57,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6432632021300231392, guid: c3056abfe994d5b4abe28f1a11b19f57,
         type: 3}
