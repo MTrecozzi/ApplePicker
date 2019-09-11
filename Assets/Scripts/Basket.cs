@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-
 using System.Collections.Generic;
-
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 
 
@@ -10,6 +10,27 @@ public class Basket : MonoBehaviour
 {
 
     public float bounds;
+
+    [Header("Set Dynamically")]
+    public TextMeshProUGUI scoreGT;
+
+    public void Start()
+    {
+        GameObject scoreGO = GameObject.Find("ScoreCounter");
+
+        scoreGT = scoreGO.GetComponent<TextMeshProUGUI>();
+        
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        GameObject collidedWith = col.gameObject;
+
+        if (collidedWith.CompareTag("Apple"))
+        {
+            Destroy(collidedWith);
+        }
+    }
 
     void Update()
     {
@@ -28,8 +49,7 @@ public class Basket : MonoBehaviour
         {
             this.transform.position = pos;
         }
-            
-
+          
     }
 
 }
