@@ -10,8 +10,13 @@ public class ApplePicker : MonoBehaviour
     public float basketBottomY = -14f;
     public float basketSpacingY = 2f;
 
+    //public GameObject[] baskets;
+
     void Start()
     {
+
+        //baskets = new GameObject[numBaskets];
+
         for (int i = 0; i < numBaskets; i++)
         {
             GameObject tBasketGO = Instantiate<GameObject>(basketPrefab);
