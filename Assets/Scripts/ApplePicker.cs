@@ -102,6 +102,8 @@ public class ApplePicker : MonoBehaviour
 
             Destroy(curApple);
 
+            SFX_II.instance.Play("AppleDestruction");
+
             yield return new WaitForSeconds(.2f);
         }
 
