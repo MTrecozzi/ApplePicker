@@ -34,6 +34,10 @@ public class ApplePicker : MonoBehaviour
     {
         GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
 
+        AppleTree currentAppleTree = GameObject.Find("Tree").GetComponent<AppleTree>();
+
+        currentAppleTree.IncreaseDifficulty();
+
         // replace with coroutine;
         foreach (GameObject tGO in tAppleArray)
         {
@@ -41,9 +45,6 @@ public class ApplePicker : MonoBehaviour
         }
 
         int basketIndex = baskets.Count - 1;
-
-        
-
 
         if (basketIndex >= 0)
         {

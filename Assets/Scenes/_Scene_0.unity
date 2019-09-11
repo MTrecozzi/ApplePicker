@@ -842,5 +842,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2797347378019620214, guid: c3056abfe994d5b4abe28f1a11b19f57,
+        type: 3}
+      propertyPath: chanceToChangeDirections
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797347378019620214, guid: c3056abfe994d5b4abe28f1a11b19f57,
+        type: 3}
+      propertyPath: secondsBetweenAppleDrops
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797347378019620214, guid: c3056abfe994d5b4abe28f1a11b19f57,
+        type: 3}
+      propertyPath: difficultyTimeInterval
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3056abfe994d5b4abe28f1a11b19f57, type: 3}
