@@ -19,6 +19,8 @@ public class Basket : MonoBehaviour
         GameObject scoreGO = GameObject.Find("ScoreCounter");
 
         scoreGT = scoreGO.GetComponent<TextMeshProUGUI>();
+
+        scoreGT.text = "0";
         
     }
 
@@ -29,6 +31,18 @@ public class Basket : MonoBehaviour
         if (collidedWith.CompareTag("Apple"))
         {
             Destroy(collidedWith);
+
+            int score = int.Parse(scoreGT.text);
+
+            score += 100;
+
+            scoreGT.text = score.ToString();
+
+            if (score > HighScore.score)
+            {
+                HighScore.SetScore(score);
+            }
+
         }
     }
 
