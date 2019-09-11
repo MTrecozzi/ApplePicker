@@ -13,6 +13,20 @@ public class ApplePicker : MonoBehaviour
 
     public List<GameObject> baskets;
 
+    private AppleTree appleTree;
+
+    private Coroutine destroyApples;
+
+    public void Awake()
+    {
+        appleTree = GameObject.Find("Tree").GetComponent<AppleTree>();
+    }
+
+    public void Update()
+    {
+        
+    }
+
 
     void Start()
     {
@@ -32,16 +46,18 @@ public class ApplePicker : MonoBehaviour
 
     public void AppleDestroyed()
     {
+        appleTree.IncreaseDifficulty();
+
+        bool finishedGame = false;
+
         GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
+        List<GameObject> applesList = new List<GameObject>();
 
-        AppleTree currentAppleTree = GameObject.Find("Tree").GetComponent<AppleTree>();
-
-        currentAppleTree.IncreaseDifficulty();
-
-        // replace with coroutine;
+        
         foreach (GameObject tGO in tAppleArray)
         {
-            Destroy(tGO);
+            //Destroy(tGO);
+            applesList.Add(tGO);
         }
 
         int basketIndex = baskets.Count - 1;
@@ -59,16 +75,44 @@ public class ApplePicker : MonoBehaviour
 
         if (baskets.Count == 0)
         {
+            finishedGame = true;
+        }
+
+        //CallCoroutine
+        destroyApples = StartCoroutine(DestroyApples(applesList, finishedGame));
+    }
+
+    public IEnumerator DestroyApples(List<GameObject> list, bool finished)
+    {
+
+        appleTree.SetActive(false);
+
+        foreach(GameObject obj in list)
+        {
+            obj.GetComponent<Rigidbody>().isKinematic = true;
+        }
+
+        list.Reverse();
+
+        while (list.Count > 0)
+        {
+            GameObject curApple = list[list.Count - 1];
+
+            list.RemoveAt(list.Count - 1);
+
+            Destroy(curApple);
+
+            yield return new WaitForSeconds(.2f);
+        }
+
+        appleTree.SetActive(true);
+        appleTree.DropApple();
+
+        if (finished)
+        {
             // Finish Game
             SceneManager.LoadScene("_Scene_0");
         }
-
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

@@ -30,7 +30,6 @@ public class AppleTree : MonoBehaviour
         currentDifficulty = new DifficultyField(speed, chanceToChangeDirections, secondsBetweenAppleDrops);
         Invoke("DropApple", currentDifficulty.secondsBetweenAppleDrops);
         nextDifficultySpike = gameTime + difficultyTimeInterval;
-        
     }
 
     public void SetActive(bool _active)
@@ -76,14 +75,17 @@ public class AppleTree : MonoBehaviour
         
     }
 
-    void DropApple()
+    public void DropApple()
     {                                                  // b
+        if (active)
+        {
+            GameObject apple = Instantiate<GameObject>(applePrefab);      // c
 
-        GameObject apple = Instantiate<GameObject>(applePrefab);      // c
+            apple.transform.position = transform.position;                  // d
 
-        apple.transform.position = transform.position;                  // d
+            Invoke("DropApple", currentDifficulty.secondsBetweenAppleDrops);                // e
 
-        Invoke("DropApple", currentDifficulty.secondsBetweenAppleDrops);                // e
+        }
 
     }
 
