@@ -21,9 +21,7 @@ public class Basket : MonoBehaviour
     public void Start()
     {
         GameObject scoreGO = GameObject.Find("ScoreCounter");
-
         scoreGT = scoreGO.GetComponent<TextMeshProUGUI>();
-
         scoreGT.text = "0";
         
     }
