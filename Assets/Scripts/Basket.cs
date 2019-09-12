@@ -11,6 +11,8 @@ public class Basket : MonoBehaviour
 
     public float bounds;
 
+    public PitchScaler pitchScaler = new PitchScaler();
+
     [Header("Set Dynamically")]
     public TextMeshProUGUI scoreGT;
 
@@ -33,6 +35,10 @@ public class Basket : MonoBehaviour
         if (collidedWith.CompareTag("Apple"))
         {
             Destroy(collidedWith);
+
+             AudioSource source = SFX_II.instance.GetFirstSource("AppleCollect");
+            source.pitch = pitchScaler.GetNextPitch();
+            source.Play();
 
             int score = int.Parse(scoreGT.text);
 
@@ -71,4 +77,26 @@ public class Basket : MonoBehaviour
 
     }
 
+}
+
+public class PitchScaler
+{
+    public float startingPitch = 0.7f;
+    public float pitchInterval = 0.05f;
+    public float curPitch = 0.7f;
+
+    public float maxPitch = 2f;
+
+    public float GetNextPitch()
+    {
+        curPitch += pitchInterval;
+
+        
+        if (curPitch > maxPitch)
+        {
+            curPitch = startingPitch;
+        } 
+
+        return curPitch;
+    }
 }

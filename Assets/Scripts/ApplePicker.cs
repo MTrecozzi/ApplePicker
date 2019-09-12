@@ -100,7 +100,7 @@ public class ApplePicker : MonoBehaviour
 
             list.RemoveAt(list.Count - 1);
 
-            Destroy(curApple);
+            curApple.GetComponent<Apple>().Explode();
 
             SFX_II.instance.Play("AppleDestruction");
 

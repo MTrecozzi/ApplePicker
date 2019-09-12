@@ -24,17 +24,30 @@ public class AppleTree : MonoBehaviour
 
     public bool active;
 
+    bool hasStarted = false;
+
     // Start is called before the first frame update
     void Start()
     {
         currentDifficulty = new DifficultyField(speed, chanceToChangeDirections, secondsBetweenAppleDrops);
-        Invoke("DropApple", currentDifficulty.secondsBetweenAppleDrops);
+        //Invoke("DropApple", currentDifficulty.secondsBetweenAppleDrops);
         nextDifficultySpike = gameTime + difficultyTimeInterval;
+
+        active = false;
     }
 
     public void SetActive(bool _active)
     {
+
         this.active = _active;
+
+        if (_active && !hasStarted)
+        {
+            DropApple();
+            hasStarted = true;
+        }
+
+        
     }
 
     public void IncreaseDifficulty()

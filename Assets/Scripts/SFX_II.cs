@@ -84,6 +84,24 @@ public class SFX_II : MonoBehaviour
         }
     }
 
+    public AudioSource GetFirstSource(string sound)
+    {
+        AudioSource source = null;
+
+        if (instance == null) { return source; }
+
+        foreach (SoundArray array in soundArrays)
+        {
+
+            if (array.name.Equals(sound))
+            {
+                source = array.sources[0];
+            }
+        }
+
+        return source;
+    }
+
     public void PlayAll(string sound){
 
         if (instance == null){ return;}

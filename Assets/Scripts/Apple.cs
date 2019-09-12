@@ -6,11 +6,20 @@ public class Apple : MonoBehaviour
 {
     [Header("Set in Inspector")]
     public static float bottomY = -20f;
+    public MeshRenderer mesh;
+    public ParticleSystem explosion;
 
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    public void Explode()
+    {
+        mesh.enabled = false;
+        explosion.Play();
+        Destroy(transform.gameObject, 1.5f);
     }
 
     // Update is called once per frame
